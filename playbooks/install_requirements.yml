@@ -1,0 +1,25 @@
+
+---
+- name: Install basic requirements
+  hosts: openshift_perftest
+  become: true
+  
+  pre_tasks:
+    - name: Ensure apt caches are up to date.
+      apt:
+        update_cache: true
+      become: true
+
+  tasks:
+    - name: Install required packages.
+      apt:
+        name:
+          - python3-pip
+          - unzip
+        state: present
+
+    - name: Install dependencies.
+      pip:
+        name:
+          - ansible
+        state: present

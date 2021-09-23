@@ -1,0 +1,27 @@
+- hosts: aws
+  gather_facts: false
+  become: true
+
+  handlers:
+    - name: reboot
+      reboot:
+
+  tasks:
+    - name: Wait for host to become available.
+      wait_for_connection:
+
+    - name: Gather facts.
+      setup:
+
+    - name: Upgrade everything on the server.
+      apt:
+        upgrade: dist
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Notify reboot handler if a reboot is required.
+      shell: "[ -f /var/run/reboot-required ]"
+      failed_when: false
+      register: reboot_required
+      changed_when: reboot_required.rc == 0
+      notify: reboot

@@ -1,0 +1,26 @@
+---
+# tasks file for aws.jumphost
+
+- name: Create VPC
+  include_tasks: create_vpc.yml
+
+- name: Create Subnets
+  include_tasks: create_subnets.yml
+
+- name: Setup Internet Gateway
+  include_tasks: setup_igw.yml
+
+#- name: Setup NAT Gateway
+#  include_tasks: setup_ngw.yml
+
+- name: Setup Route Tables
+  include_tasks: setup_rt.yml
+
+- name: Setup Security Groups
+  include_tasks: setup_sg.yml
+
+- name: Create a Key Pair
+  include_tasks: create_keypair.yml
+
+- name: Create EC2 jumphost
+  include_tasks: create_jumphost.yml

@@ -1,0 +1,13 @@
+---
+
+- name: Get EC2 security group ID.
+  ec2_group_info:
+    filters:
+      group-name: "{{ resource_name }}"
+  register: ec2_group
+
+- name: Delete EC2 security group.
+  ec2_group:
+    state: absent
+    group_id: "{{ ec2_group.security_groups[0].group_id }}"
+  when: ec2_group.security_groups

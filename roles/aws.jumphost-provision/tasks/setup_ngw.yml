@@ -1,0 +1,21 @@
+---
+
+- name: Create new NAT gateway and allocate new EIP if a NAT gateway does not yet exist in the subnet.
+  ec2_vpc_nat_gateway:
+    state: present
+    subnet_id: "{{ public_subnet_id }}"
+    wait: yes
+    if_exist_do_not_create: true
+    tags:
+      Name: "{{ resource_name }}"
+  register: ngw_result
+
+- name: Gather info on NATGW
+  ec2_vpc_nat_gateway_info:
+    filters:
+      "tag:Name": "{{ resource_name }}"
+  register: ngw_result_info
+
+- name: Set fact NGW-Bench
+  set_fact:
+    ngw_id: "{{ ngw_result_info.result[0].nat_gateway_id }}"

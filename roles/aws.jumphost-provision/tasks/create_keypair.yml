@@ -1,0 +1,14 @@
+---
+
+- name: Create a KeyPair
+  ec2_key:
+    name: "{{ aws_key_name }}"
+    state: present
+  register: keypair_result
+
+- name: Save Private Key
+  copy:
+    content: "{{ keypair_result.key.private_key }}"
+    dest: "{{ keypair_destination }}"
+    mode: 0600
+  when: keypair_result.changed  

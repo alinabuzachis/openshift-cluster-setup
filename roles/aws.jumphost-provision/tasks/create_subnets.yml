@@ -1,0 +1,32 @@
+---
+
+- name: Create VPC subnets
+  ec2_vpc_subnet:
+    tags:
+      Name: "{{ resource_name }}"
+      Privacy: "{{ item.privacy }}"
+    vpc_id: "{{ vpc_id }}"
+    cidr: "{{ item.cidr }}"
+    az: "{{ item.az }}"
+  loop: "{{ vpc_subnets }}"
+
+- name: Gather info on Public Subnet
+  ec2_vpc_subnet_info:
+    filters:
+      "tag:Privacy": Public
+  register: subnet_result_info
+
+- name: Set Public Subnet ID Fact
+  set_fact:
+    public_subnet_id: "{{ subnet_result_info.subnets[0].id }}"
+
+- name: Gather info on Private Subnet
+  ec2_vpc_subnet_info:
+    region: "{{aws_region }}"
+    filters:
+      "tag:Privacy": Private
+  register: subnet_result_info
+
+- name: Set Private Subnet ID Fact
+  set_fact:
+    private_subnet_id: "{{ subnet_result_info.subnets[0].id }}"

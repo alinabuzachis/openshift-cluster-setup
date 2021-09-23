@@ -1,0 +1,21 @@
+---
+- name: Deploy EC2 jumphost
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  vars_files:
+    - vars/main.yml
+  
+  module_defaults:
+    group/aws:
+      profile: "{{ aws_profile }}"
+      region: "{{ aws_region }}"
+  
+  roles:
+    - role: aws.jumphost-provision
+    # - role: aws.iam
+
+
+- import_playbook: playbooks/upgrade_jumphost.yml
+- import_playbook: playbooks/install_requirements.yml

@@ -1,0 +1,6 @@
+---
+# defaults file for roles/ocp.cluster-setup
+
+ocp_route53_hosted_zone: abczone.xyz
+ocp_cluster_name: openshift-cluster
+ocp_cluster_aws_region: eu-central-1

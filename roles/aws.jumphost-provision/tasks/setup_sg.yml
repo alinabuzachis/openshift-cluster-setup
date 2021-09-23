@@ -1,0 +1,31 @@
+---
+  
+- name: Create Security Groups
+  ec2_group:
+    name: "{{ resource_name }}"
+    description: "{{ item.description }}"
+    vpc_id: "{{ vpc_id }}"
+    tags:
+      Name: "{{ resource_name }}"
+    state: present
+    rules:
+      - proto: tcp
+        ports: 80
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port
+      - proto: tcp
+        ports: 22
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow ssh for everyone
+  register: security_group_result
+  loop: "{{ security_groups }}"
+
+- name: Gather info on public Security group
+  ec2_group_info:
+    filters:
+      "tag:Name": "{{ resource_name }}"
+  register: public_sg_info
+
+- name: Set fact on Public SG
+  set_fact:
+    public_sg_id: "{{ public_sg_info.security_groups[0].group_id }}"

@@ -1,0 +1,8 @@
+---
+# tasks file for roles/aws.iam
+
+- name: Create a Role for jumphost
+  include_tasks: create_roles.yml 
+
+- name: Create a policy and assign to IAM role EC2
+  include_tasks: create_policies.yml 

@@ -1,0 +1,10 @@
+---
+aws_profile: default # AWS Account
+aws_region: eu-central-1
+#aws_ec2_ami: ami-05dc324761386f3a9 # Ubuntu 20.04 us-east-1
+#aws_ec2_ami: ami-04ea83ef6e494c1f2 # Ubuntu 20.04 us-east-2
+aws_ec2_ami: ami-0b063c60b220a0574 # Ubuntu 20.04 eu-central-1
+aws_key_name: key_bench
+resource_name: openshift_perftest
+ansible_user: ubuntu
+ansible_ssh_private_key_file: ~/.ssh/key_bench.pub

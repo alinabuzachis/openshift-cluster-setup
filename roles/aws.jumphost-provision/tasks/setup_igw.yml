@@ -1,0 +1,19 @@
+---
+
+- name: Create Internet Gateway
+  ec2_vpc_igw:
+    vpc_id: "{{ vpc_id }}"
+    tags:
+      Name: "{{ resource_name }}"
+    state: present
+  register: igw_result
+
+- name: Gather info on IGW
+  ec2_vpc_igw_info:
+    filters:
+      "tag:Name": "{{ resource_name }}"
+  register: igw_result_info
+
+- name: Set fact IGW-Bench
+  set_fact:
+    igw_id: "{{ igw_result_info.internet_gateways[0].internet_gateway_id }}"

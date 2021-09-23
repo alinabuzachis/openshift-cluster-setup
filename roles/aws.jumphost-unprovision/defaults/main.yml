@@ -1,0 +1,17 @@
+---
+# defaults file for roles/aws.jumphost-unprovision
+
+resource_name: openshift_perftest
+
+vpc_cidr_block: "10.0.0.0/16"
+
+vpc_subnets:
+  - name: "Public Subnet - Bench"
+    cidr: "10.0.0.0/18"
+    az: "{{ aws_region }}a"
+    privacy: "Public"
+
+  - name: "Private-Subnet-Bench"
+    cidr: "10.0.64.0/18"
+    az: "{{ aws_region }}a"
+    privacy: "Private"

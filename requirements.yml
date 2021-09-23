@@ -1,0 +1,3 @@
+---
+roles:
+  - name: oasis_roles.ocp_pull_secrets

@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - vars/main.yml
+
+  module_defaults:
+    group/aws:
+      profile: "{{ aws_profile }}"
+      region: "{{ aws_region }}"
+
+  #tasks:
+  #  - name: Destroy OpenShift cluster
+  #    shell: 
+  #      cmd: openshift-install destroy cluster --log-level debug
+  #    args:
+  #      chdir: "~/ocp"
+
+  roles:
+    - role: aws.jumphost-unprovision
+

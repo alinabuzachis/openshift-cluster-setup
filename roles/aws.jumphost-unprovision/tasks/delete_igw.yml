@@ -1,0 +1,8 @@
+---
+
+- name: Delete VPC internet gateway.
+  ec2_vpc_igw:
+    state: absent
+    vpc_id: "{{ vpc_id }}"
+    tags:
+      Name: "{{ resource_name }}"
