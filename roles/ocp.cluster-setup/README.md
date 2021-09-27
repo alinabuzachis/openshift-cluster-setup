@@ -1,38 +1,48 @@
-Role Name
+ocp.cluster-setup
 =========
 
-A brief description of the role goes here.
+Proivion a Red Hat OpenShift Cluster on AWS. It does the following:
+
+    1. Downloads OpenShift on AWS installer
+    2. Create an OpenShift cluster using the information provided inside templates/install-comfig.yml.j2
+    3. Download OpenShift Command-line tool.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Boto and any software required to run Ansible AWS cloud modules. 
+
+An offline access token found at https://cloud.redhat.com/openshift/token (login required), and according to the documentation found in the OCP [install guide](https://cloud.redhat.com/openshift/install).
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+* `ocp_route53_hosted_zone`
+    * Amazon Route53 hosted zone.
+* `ocp_cluster_name`
+    * OpenShift cluster name.
+* `ocp_cluster_aws_region`
+    * AWS region used to deploy the OpenShift cluster.
+*  `ocp_pull_secrets`
+    * Acquired from `oasis_roles.ocp_pull_secrets`.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* `oasis_roles.ocp_pull_secrets`
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: localhost
+      connection: local
+      gather_facts: yes
+      
       roles:
-         - { role: username.rolename, x: 42 }
+      - role: ocp_pull_secrets
+      - role: ocp.cluster-setup
 
 License
 -------
 
 BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
