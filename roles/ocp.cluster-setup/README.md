@@ -3,8 +3,8 @@ ocp.cluster-setup
 
 Proivion a Red Hat OpenShift Cluster on AWS. It does the following:
 
-    1. Downloads OpenShift on AWS installer
-    2. Create an OpenShift cluster using the information provided inside templates/install-comfig.yml.j2
+    1. Downloads OpenShift on AWS installer.
+    2. Create an OpenShift cluster using the information provided inside templates/install-comfig.yml.j2.
     3. Download OpenShift Command-line tool.
 
 Requirements
