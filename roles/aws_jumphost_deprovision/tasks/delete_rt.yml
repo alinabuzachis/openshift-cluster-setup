@@ -1,0 +1,9 @@
+---
+
+- name: Delete VPC route table.
+  ec2_vpc_route_table:
+    state: absent
+    vpc_id: "{{ vpc_id }}"
+    lookup: tag
+    tags:
+      Name: "{{ resource_name }}"

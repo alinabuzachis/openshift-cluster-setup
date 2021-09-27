@@ -1,0 +1,26 @@
+---
+# tasks file for roles/aws_jumphost_deprovision
+
+- name: Delete EC2 jumphost
+  include_tasks: delete_jumphost.yml
+
+- name: Delete Security Groups
+  include_tasks: delete_sg.yml
+
+- name: Get VPC ID
+  include_tasks: get_vpc_id.yml
+
+- name: Delete Route Tables
+  include_tasks: delete_rt.yml
+
+- name: Delete Internet Gateway
+  include_tasks: delete_igw.yml
+
+#- name: Delete NAT Gateway
+#  include_tasks: delete_ngw.yml
+
+- name: Delete Subnets
+  include_tasks: delete_subnets.yml
+
+- name: Delete VPC
+  include_tasks: delete_vpc.yml

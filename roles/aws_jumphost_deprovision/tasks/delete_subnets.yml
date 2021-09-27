@@ -1,0 +1,8 @@
+---
+
+- name: Delete VPC subnet.
+  ec2_vpc_subnet:
+    state: absent
+    vpc_id: "{{ vpc_id }}"
+    cidr: "{{ item.cidr }}"
+  loop: "{{ vpc_subnets }}"

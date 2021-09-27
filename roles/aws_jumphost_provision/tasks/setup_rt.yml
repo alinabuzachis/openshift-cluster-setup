@@ -1,0 +1,23 @@
+---
+
+- name: Set up public subnet route table
+  ec2_vpc_route_table:
+    vpc_id: "{{ vpc_id }}"
+    subnets: "{{ public_subnet_id }}"
+    tags:
+      Name: "{{ resource_name }}"
+    routes:
+      - dest: "{{ item.dest }}"
+        gateway_id: "{{ igw_id }}"
+  loop: "{{ route_tables }}"
+
+#- name: Set up Private subnet route table
+#  ec2_vpc_route_table:
+#    vpc_id: "{{ vpc_id }}"
+#    tags:
+#      Name: "{{ resource_name }}"
+#    subnets: "{{ private_subnet_id }}"
+#    routes:
+#      - dest: "{{ item.dest }}"
+#        gateway_id:  "{{ ngw_id }}"
+#  loop: "{{ route_tables }}"

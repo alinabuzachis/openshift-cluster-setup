@@ -1,0 +1,12 @@
+---
+
+- name: Create IAM roles
+  iam:
+    name: "{{ iam_role_name }}"
+    iam_type: role
+    state: present
+  register: iam_role
+
+- name: Set fact VPC ID
+  set_fact:
+    iam_role_ec2_jumphost: "{{ iam_role_name }}"

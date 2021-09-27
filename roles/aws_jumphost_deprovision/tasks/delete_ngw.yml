@@ -1,0 +1,17 @@
+---
+
+- name: Get EC2 Instance ID.
+  ec2_vpc_nat_gateway_info:
+    filters:
+      "tag:Name": "{{ resource_name }}"
+      instance-state-name: ["running"]
+  register: ngw_result
+
+- name: Delete NAT gateway.
+  ec2_vpc_nat_gateway:
+    state: absent
+    nat_gateway_id: "{{ item.NatGatewayId }}"
+    tags:
+      Name: "{{ resource_name }}"
+    release_eip: true
+  loop: "{{ ngw_result.result }}"

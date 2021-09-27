@@ -1,0 +1,18 @@
+---
+- name: Install basic requirements
+  hosts: openshift_perftest
+
+  vars_files:
+     - aws_keys.yml
+      - ocp_token.yml
+
+  tasks:
+    - name: Save AWS credentials
+      template:
+        src: credentials.j2
+        dest: ~/.aws/credentials
+        mode: 0400
+
+  roles:
+    - role: ocp_pull_secrets
+    - role: ocp_cluster_setup

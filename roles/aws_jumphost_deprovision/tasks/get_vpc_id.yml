@@ -1,0 +1,15 @@
+---
+
+- name: Get VPC ID.
+  ec2_vpc_net_info:
+    filters:
+      "tag:Name": "{{ resource_name }}"
+  register: vpc
+
+- name: Fail if no VPC found.
+  fail:
+  when: not vpc.vpcs
+
+- name: Set VPC ID variable.
+  set_fact:
+    vpc_id: "{{ vpc.vpcs[0].vpc_id }}"
