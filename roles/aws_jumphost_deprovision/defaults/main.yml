@@ -1,5 +1,5 @@
 ---
-# defaults file for roles/aws.jumphost-unprovision
+# defaults file for roles/aws_jumphost_deprovision
 
 resource_name: openshift_perftest
 

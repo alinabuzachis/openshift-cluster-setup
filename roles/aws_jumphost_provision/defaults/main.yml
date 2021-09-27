@@ -1,5 +1,5 @@
 ---
-# defaults file for aws.jumphost
+# defaults file for aws_jumphost_provision
 
 resource_name: openshift_perftest
 

@@ -13,8 +13,8 @@
       region: "{{ aws_region }}"
   
   roles:
-    - role: aws.jumphost-provision
-    # - role: aws.iam
+    - role: aws_jumphost_provision
+    # - role: aws_iam
 
 
 - import_playbook: playbooks/upgrade_jumphost.yml

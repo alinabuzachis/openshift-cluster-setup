@@ -1,4 +1,4 @@
 ---
 roles:
   - name: oasis_roles.ocp_pull_secrets
-  - name: ocp.cluster-setup
+  - name: alinabuzachis.ocp_cluster_setup

@@ -15,4 +15,4 @@
 
   roles:
     - role: ocp_pull_secrets
-    - role: ocp.cluster-setup
+    - role: ocp_cluster_setup

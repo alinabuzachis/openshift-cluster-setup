@@ -1,4 +1,4 @@
-aws.jumphost-deprovision
+aws_jumphost_deprovision
 =========
 
 Deletes the AWS EC2 instance and all the resources initialized by `aws.jumphost-deprovision`.
@@ -27,7 +27,7 @@ Example Playbook
       gather_facts: yes
 
       roles:
-      - role: aws.jumhost-deprovision
+      - role: aws_jumhost_deprovision
 
 License
 -------

@@ -1,5 +1,5 @@
 ---
-# tasks file for roles/aws.iam
+# tasks file for roles/aws_iam
 
 - name: Create a Role for jumphost
   include_tasks: create_roles.yml 

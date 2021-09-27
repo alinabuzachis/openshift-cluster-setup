@@ -11,13 +11,13 @@
       profile: "{{ aws_profile }}"
       region: "{{ aws_region }}"
 
-  #tasks:
-  #  - name: Destroy OpenShift cluster
-  #    shell: 
-  #      cmd: openshift-install destroy cluster --log-level debug
-  #    args:
-  #      chdir: "~/ocp"
+  tasks:
+    - name: Destroy OpenShift cluster
+      shell: 
+        cmd: openshift-install destroy cluster --log-level debug
+      args:
+        chdir: "~/ocp"
 
   roles:
-    - role: aws.jumphost-unprovision
+    - role: aws_jumphost_deprovision
 

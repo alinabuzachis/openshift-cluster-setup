@@ -1,4 +1,4 @@
-aws.jumphost-provision
+aws_jumphost_provision
 =========
 
 Establishes the AWS settings for a bastion/NAT host. Does the following:
@@ -36,7 +36,7 @@ Example Playbook
       gather_facts: yes
 
       roles:
-      - role: aws.jumhost-provision
+      - role: aws_jumhost_provision
 
 License
 -------

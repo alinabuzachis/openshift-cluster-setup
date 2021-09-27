@@ -1,11 +1,7 @@
-aws.iam
+aws_iam
 =========
 
-Creates private and public routes, based on AWS tags. Does the following:
-
-    1. Creates a VPC Internet Gateway.
-    2. Creates the private routes, using the bastionhost instance ID.
-    3. Creates the public route, using the created VPC Internet Gateway.
+Creates IAM roles and policies.
 
 Requirements
 ------------
@@ -30,7 +26,7 @@ Example Playbook
       gather_facts: yes
 
       roles:
-      - role: aws.iam
+      - role: aws_iam
 
 License
 -------

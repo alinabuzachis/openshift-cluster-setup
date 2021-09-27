@@ -1,5 +1,5 @@
 ---
-# tasks file for aws.jumphost
+# tasks file for aws_jumphost_provision
 
 - name: Create VPC
   include_tasks: create_vpc.yml

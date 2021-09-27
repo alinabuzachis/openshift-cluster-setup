@@ -1,5 +1,5 @@
 ---
-# tasks file for roles/aws.jumphost-unprovision
+# tasks file for roles/aws_jumphost_deprovision
 
 - name: Delete EC2 jumphost
   include_tasks: delete_jumphost.yml
