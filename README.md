@@ -36,12 +36,14 @@ Install requirements:
 $ ansible-galaxy install -r requirements.yml
 ```
 Build the Amazon EC2 jump server:
+
 ```
 $ ansible-playbook build.yml
 ```
 Once the Amazon EC2 jump server has been set up,
 Get pull secrets to be used by OpenShift Container Platform (OCP) 4.x to pull images from registries that require authentication.
 Provision a Red Hat OpenShift Cluster on AWS in the environment:
+
 ```
 $ ansible-playbook openshift_install.yml --ask-vault-password
 ```
