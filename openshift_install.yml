@@ -3,8 +3,8 @@
   hosts: openshift_perftest
 
   vars_files:
-     - aws_keys.yml
-      - ocp_token.yml
+    - aws_keys.yml
+    - ocp_token.yml
 
   tasks:
     - name: Save AWS credentials
@@ -14,5 +14,5 @@
         mode: 0400
 
   roles:
-    - role: ocp_pull_secrets
-    - role: ocp_cluster_setup
+    - role: oasis_roles.ocp_pull_secrets
+    - role: alinabuzachis.ocp_cluster_setup

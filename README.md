@@ -11,7 +11,6 @@ You need an AWS Account and Admin User credentials. Create a vault file with AWS
   2. Choose a password
   3. Update the newly created file with the following information:
 ```
-[default]
 aws_access_key: AKxxxxxxxxxxxxx
 aws_secret_key: xxxxxxxxxxxxxxx 
 ```
