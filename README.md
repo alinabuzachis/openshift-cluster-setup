@@ -7,7 +7,7 @@ The playbooks build all the required components (including VPC, networking, secu
 
 ### AWS
 You need an AWS Account and Admin User credentials. Create a vault file with AWS credentials:
-  1. Go to root of this project and execute this command: ansible-vault create aws_keys.yml
+  1. Go to root of this project and execute this command: `ansible-vault create aws_keys.yml`
   2. Choose a password
   3. Update the newly created file with the following information:
 ```
